@@ -67,14 +67,12 @@ try {
 export async function updateUser(req:ExtendedRequest,res:Response){
     try {
     const {Name, Email, Password}= req.body
-         const user:User= await (await _db.exec('getUserbyEmail',{id:req.params.id})).recordset[0]
-    
-      if(req.info){
-        if(user){
-          await _db.exec('UpdateUser', {name:Name,email:Email,password:Password})
+         const user:User[]= await (await _db.exec('getUserById',{id:req.params.id})).recordset[0]
+
+        if(user.length){
+          await _db.exec('UpdateUser', {id:req.params.id,name:Name,email:Email,password:Password})
           return res.status(200).json({message:'Updated'})
         }
-      }
     
       return res.status(404).json({error:'User Not Found'}) 
          

@@ -41,9 +41,9 @@ POST  http://localhost:4000/auth/register
 Content-Type: application/json
 
 {
-    "Name":"Kuku Ali Ngocho",
-    "Email":"wrightkuku10@gmail.com",
-    "Password":"Tryme!here23"
+  "Name":"Piera",
+  "Email":"nyagapiera99@gmail.com",
+  "Password":"Monalisa@2023"
 }
 
 ###
@@ -51,8 +51,8 @@ POST  http://localhost:4000/auth/login
 Content-Type: application/json
 
 {
-     "Email":"wrightkuku10@gmail.com",
-    "Password":"Tryme!here23"
+"Email":"nyagapiera99@gmail.com",
+"Password":"Monalisa@2023"
 }
 
 
