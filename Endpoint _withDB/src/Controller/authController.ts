@@ -64,6 +64,27 @@ try {
 }
 }
 
+export async function updateUser(req:ExtendedRequest,res:Response){
+    try {
+    const {Name, Email, Password}= req.body
+         const user:User= await (await _db.exec('getUserbyEmail',{id:req.params.id})).recordset[0]
+    
+      if(req.info){
+        if(user){
+          await _db.exec('UpdateUser', {name:Name,email:Email,password:Password})
+          return res.status(200).json({message:'Updated'})
+        }
+      }
+    
+      return res.status(404).json({error:'User Not Found'}) 
+         
+      } 
+    
+    catch (error:any) {
+       res.status(500).json(error.message)
+    }
+    }
+
 
 export async function Homepage(req:ExtendedRequest,res:Response) {
     try {
